@@ -12,6 +12,7 @@
 2. [프로젝트 개요](#2-프로젝트-개요)
 - 프로젝트 명
 - 프로젝트 소개
+- 프로젝트 필요성
 - 프로젝트 목표
 
 3. [기술 스택](#3-기술-스택)
@@ -89,12 +90,12 @@
 # 2. 프로젝트 개요
 
 ## [프로젝트 명]
-삼성 스마트폰 고객 이탈 예측
+삼성 스마트폰 사용자 이탈 예측
 <br>
 </br>
 
 ## [프로젝트 소개]
-스마트폰 사용자의 이탈을 예측하고 이를 방지하기 위한 모델 개발 프로젝트를 진행 하였습니다.<br>
+머신러닝 학습을 통해 고객 이탈 패턴을 분석하고, 이를 바탕으로 이탈 가능성을 예측하는 모델을 개발한다.<br>
 
 
 ## [프로젝트 필요성] 
@@ -106,23 +107,30 @@
 
 <br>
 
-스마트폰 시장의 경쟁이 치열해짐에 따라, 고객 이탈을 방지하는 것이 중요한 경영 전략이 되었습니다. 이탈을 예측하고 사전 대응함으로써, 고객 유지율을 높이고 브랜드 충성도를 강화할 수 있습니다. 또한, 프로젝트를 통해 고객 이탈을 예방하기 위한 효율적인 마케팅 전략을 수립하고, 비용 대비 효과적인 고객 유지 방안을 마련할 수 있을 것으로 기대됩니다. <br>
 뉴스 출처: [https://www.epnc.co.kr/news/](https://www.epnc.co.kr/news/articleView.html?idxno=312152)
 
+
+글로벌 스마트폰 시장에서 애플이 여전히 점유율 1위 자리를 지키는 가운데, 삼성전자는 다양한 전략과 신제품으로 1위 애플을 맹추격중에 있으나, 최근 부진한 모습을 보이고 있음. <br>
+
+ <div align=center>
+<img src="images/news_p.png" width="800" height="300" />
+</div align=center>
+
+
+뉴스 출처: https://www.mk.co.kr/economy/view.php?no=439796&sc=50000001&year=2016
 <br>
 
+
+한편, 기업 수익의 측면에서는 신제품 개발이나 신규 고객 유치보다 기존 고객 유지(이탈 방지)가 더 효과적인 전략으로 평가됨.
+
+따라서, 고객의 이탈을 미리 예측하고 방지할 수 있다면 삼성의 시장 점유율 향상에  도움이 될 것으로 기대.
 
 ## [프로젝트 목표]
 
-**고객 이탈 예측**: 삼성 스마트폰 사용자의 다양한 특성을 기반으로 이탈 확률을 예측하는 모델을 구축하여, 고객 이탈을 사전에 파악할 수 있도록 한다.
-
-**이탈 고객 분석**: 이탈 가능성이 높은 고객을 식별하고, 그들의 특성을 분석하여 향후 이탈을 줄일 수 있는 맞춤형 전략을 제시한다.
-
-**고객 유지 전략 강화**: 예측된 이탈 확률을 활용하여, 마케팅 및 고객 서비스 전략을 개선하고, 고객 유지율을 높이는 데 기여한다.
-
-**비용 절감**: 고객 이탈을 사전 예방함으로써, 신규 고객 확보보다 적은 비용으로 고객 유지 효과를 극대화한다.
-
+**삼성 스마트폰 사용자의 이탈을 예측하는 머신러닝 모델을 개발**하여, 고객 유지율을 높이고 브랜드 충성도를 강화한다. 
 <br>
+
+</br>
 
 # 3. 기술 스택
 ### 개발 도구  
@@ -151,7 +159,7 @@
 
 
 # 4. WBS
-<img src="images/SK_ENCORE_2nd_PROJECT_3TEAM_WBS.png" width="800" height="320" />
+<img src="images/SK_ENCORE_2nd_PROJECT_3TEAM_WBS.png" width="800" height="550" />
 
 <br>
 
@@ -286,44 +294,41 @@ for var in binary_vars:
 
 ## [ EDA 시각화 및 인사이트 ]
 - 이탈자 정의: 한 번이라도 이탈이 일어난 사람을 이탈자로 정의
+  * s: 삼성 / x:삼성 이외 브랜드
 
-1-0-0 삼성-기타-기타
-1-1-0 삼성-삼성-기타
-1-0-1 삼성-기타-삼성 (복귀자)
-0-1-0 기타-삼성-기타
+<img src="images/return.png" width="800" height="300" />
 
-<<<<<<위부분 수정 필요>>>>>>
 
 <br>
 
  - 22, 23년도 이탈자 비율
 
-<img src="images/brand_switch.png" width="800" height="300" />
+<img src="images/brand_switch.png" width="800" height="400" />
 
 <br>
 
 - 삼성과 기타 스마트폰 사용 비율
 
-<img src="images/brand_distribution.png" width="800" height="300" />
+<img src="images/brand_distribution.png" width="800" height="350" />
 
 <br>
 
 - 주요 변수 상관관계
 
-<img src="images/heatmap.png" width="800" height="500" />
+<img src="images/heatmap.png" width="800" height="600" />
 
 <br>
 
 - 연속형 변수 시각화
 
-<img src="images/continuous_var.png" width="800" height="400" />
+<img src="images/continuous_var.png" width="800" height="450" />
 
 
 <br>
 
 - 연도별 변수 시각화: 연도별 변수의 분포가 비슷한 형태로 나타남
 
-<img src="images/features_by_year.png" width="800" height="900" />
+<img src="images/features_by_year.png" width="800" height="1000" />
 
 <br>
 
@@ -350,16 +355,14 @@ for var in binary_vars:
 이탈 분석 데이터를 분석하고 사용자 데이터를 입력하여 주요 이탈 요인 및 이탈 방지 인사이트 제공
 
 
-
-
-<img src="images/page1.png" width="800" height="350" />
-<img src="images/page2.png" width="800" height="350" />
-<img src="images/page3.png" width="800" height="350" />
-<img src="images/page5.png" width="800" height="350" />
-<img src="images/page6.png" width="800" height="350" />
-<img src="images/page7.png" width="800" height="350" />
-<img src="images/page8.png" width="800" height="350" />
-<img src="images/page4.png" width="800" height="350" />
+<img src="images/page1.png" width="800" height="450" />
+<img src="images/page2.png" width="800" height="450" />
+<img src="images/page3.png" width="800" height="450" />
+<img src="images/page5.png" width="800" height="450" />
+<img src="images/page6.png" width="800" height="450" />
+<img src="images/page7.png" width="800" height="450" />
+<img src="images/page8.png" width="800" height="450" />
+<img src="images/page4.png" width="800" height="450" />
 
 <br>
 
@@ -367,7 +370,18 @@ for var in binary_vars:
 
 
 # 8. 기대 효과
- 개별 사용자 ID(PID)를 활용함으로써, 각 이탈자의 구체적인 특성과 패턴을 파악할 수 있으며, 이 분석을 통해 단순히 이탈률을 예측하는 것을 넘어, 사용자의 이탈 결정에 더 큰 영향을 미치는지 파악한 정보들을 토대로 이탈 예측을 구현하고 Client(고객사)에게 인사이트를 제공 하며, 향후 기업에서 고객을 유지 할 수 있는 대응전략을 수립하는 데 있어 귀중한 기초 자료가 될 것입니다.
+
+### ① 고객 이탈 예측 
+고객의 이탈을 사전에 예측하여, 이탈 가능성이 높은 고객을 식별할 수 있다.
+
+### ② 이탈 고객 특성 분석
+이탈 고객 특성을 분석하여, 이탈의 주요 원인 등과 같은 인사이트를 도출할 수 있다. 
+
+### ③ 고객 유지 전략 강화
+도출된 이탈 고객 인사이트로 고객별 맞춤형 대응 전략을 수립할 수 있다.
+
+### ④ 마케팅 비용 절감
+고객 이탈을 사전에 예방함으로써, 최종적으로는 보다 적은 비용으로 고객 유지 효과를 극대화할 수 있다.
 
 <br>
 
@@ -384,12 +398,11 @@ for var in binary_vars:
 <br>
 
 # 10. 추가 개선 방안
-오버샘플링(SMOTE, RandomSampling, ADASYN), 언더샘플링, 하이퍼 파라미터 조정(그리드서치, 랜덤서치), 특성 중요도에 따른 변수 선택, 데이터 분할, 데이터 증강, 파생변수 생성 등을 시도했으나 모델의 성능 향상에 효과가 미미하였고 추가적인 분석을 통해 추가 개선 방안에 대하여 정리해 보았습니다.
+오버샘플링(SMOTE, RandomSampling, ADASYN), 언더샘플링, 하이퍼 파라미터 조정(그리드서치, 랜덤서치), 특성 중요도에 따른 변수 선택, 데이터 분할, 데이터 증강, 파생변수 생성 등을 시도했으나 모델의 성능 향상이 미미하였고 추가적인 분석을 통해 추가 개선 방안에 대하여 정리해 보았습니다.
 
 ### ① 데이터 확보 및 증강
 외부 데이터를 활용하여 이탈 예측에 도움이 될 만한 변수 확보 필요
 
-### ② 
 
 
 # 11. 한 줄 회고
