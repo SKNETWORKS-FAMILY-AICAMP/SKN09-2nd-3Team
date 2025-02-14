@@ -100,10 +100,9 @@
 
 ## [프로젝트 필요성] 
 
- <div align=center>
+
 <img src="images/news_headline.png" width="800" height="300" />
 <img src="images/news_article.png" width="800" height="380" />
-</div align=center>
 
 <br>
 
@@ -112,9 +111,7 @@
 
 글로벌 스마트폰 시장에서 애플이 여전히 점유율 1위 자리를 지키는 가운데, 삼성전자는 다양한 전략과 신제품으로 1위 애플을 맹추격중에 있으나, 최근 부진한 모습을 보이고 있음. <br>
 
- <div align=center>
 <img src="images/news_p.png" width="800" height="300" />
-</div align=center>
 
 
 뉴스 출처: https://www.mk.co.kr/economy/view.php?no=439796&sc=50000001&year=2016
@@ -314,28 +311,20 @@ for var in binary_vars:
 
 <br>
 
-### ④ 이탈자와 연도별 특성 간의 상관관계
-
-<img src="images/R2021.png" width="800" height="400" />
-<img src="images/R2022.png" width="800" height="400" />
-<img src="images/R2023.png" width="800" height="400" />
-
-<br>
-
-### ⑤ 주요 변수 상관관계
+### ④ 주요 변수 상관관계
 
 <img src="images/heatmap.png" width="800" height="600" />
 
 <br>
 
-### ⑥ 연속형 변수 시각화
+### ⑤ 연속형 변수 시각화
 
 <img src="images/continuous_var.png" width="800" height="450" />
 
 
 <br>
 
-### ⑦ 연도별 변수 시각화: 연도별 변수의 분포가 비슷한 형태로 나타남
+### ⑥ 연도별 변수 시각화: 연도별 변수의 분포가 비슷한 형태로 나타남
 
 <img src="images/features_by_year.png" width="800" height="1000" />
 
