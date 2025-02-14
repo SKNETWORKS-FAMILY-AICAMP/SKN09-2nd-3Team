@@ -23,7 +23,7 @@
 - 데이터 수집 및 선정
 - 데이터 확인
 - 전처리
-- EDA 시각화 및 인사이트
+- EDA
 
 6. [인공지능 학습 결과서](#6-인공지능-학습-결과서)
 
@@ -59,21 +59,21 @@
     <tr>
       <td align="center">
         <div>
-          <img width="200" src=""width="200px;" alt="김정훈">
+          <img src="images/kjh.png" width="100"; alt="김정훈">
         </div>
       </td>
       <td align="center">
         <div>
-          <img src = "" width="200px" height="200px"; alt="박주은">
+          <img src = "images/je.png" width="120"; alt="박주은">
         </div>
       </td>
       <td align="center">
         <div>
-          <img src="" width="200" height="200" alt="이세진">
+          <img src="images/sj.png" width="110" alt="이세진">
         </div>
       </td>
       <td align="center">
-        <img src="" width="200" height="200" alt="임수연">
+        <img src="images/sy.png" width="100" alt="임수연">
       </td>
     </tr>
     <tr>
@@ -124,6 +124,7 @@
 한편, 기업 수익의 측면에서는 신제품 개발이나 신규 고객 유치보다 기존 고객 유지(이탈 방지)가 더 효과적인 전략으로 평가됨.
 
 따라서, 고객의 이탈을 미리 예측하고 방지할 수 있다면 삼성의 시장 점유율 향상에  도움이 될 것으로 기대.
+<br>
 
 ## [프로젝트 목표]
 
@@ -292,8 +293,8 @@ for var in binary_vars:
 ```
 
 
-## [ EDA 시각화 및 인사이트 ]
-- 이탈자 정의: 한 번이라도 이탈이 일어난 사람을 이탈자로 정의
+## [ EDA ]
+### ① 이탈자 정의: 한 번이라도 이탈이 일어난 사람을 이탈자로 정의
   * s: 삼성 / x:삼성 이외 브랜드
 
 <img src="images/return.png" width="800" height="300" />
@@ -301,54 +302,247 @@ for var in binary_vars:
 
 <br>
 
- - 22, 23년도 이탈자 비율
+### ② 22, 23년도 이탈자 비율
 
 <img src="images/brand_switch.png" width="800" height="400" />
 
 <br>
 
-- 삼성과 기타 스마트폰 사용 비율
+### ③ 삼성과 기타 스마트폰 사용 비율
 
 <img src="images/brand_distribution.png" width="800" height="350" />
 
 <br>
 
-- 주요 변수 상관관계
+### ④ 이탈자와 연도별 특성 간의 상관관계
+
+<img src="images/R2021.png" width="800" height="400" />
+<img src="images/R2022.png" width="800" height="400" />
+<img src="images/R2023.png" width="800" height="400" />
+
+<br>
+
+### ⑤ 주요 변수 상관관계
 
 <img src="images/heatmap.png" width="800" height="600" />
 
 <br>
 
-- 연속형 변수 시각화
+### ⑥ 연속형 변수 시각화
 
 <img src="images/continuous_var.png" width="800" height="450" />
 
 
 <br>
 
-- 연도별 변수 시각화: 연도별 변수의 분포가 비슷한 형태로 나타남
+### ⑦ 연도별 변수 시각화: 연도별 변수의 분포가 비슷한 형태로 나타남
 
 <img src="images/features_by_year.png" width="800" height="1000" />
 
 <br>
 
+</br>
+
 # 6. 인공지능 학습 결과서
 
-| 모델명 | 정확도 | 설명 |
-|----------|---------|---------|
-| DecisionTree | | |
-| RandomForest |  | 비교적 좋은 예측 성능을 보였지만, 모델의 해석이 어려운 편 |
-| CatBoost |  |  |
-| LightGBM |  |  |
-| XGBoost | | | |
-| Gradient Boosting |  |  |
-| AdaBoost | | | |
-| Ensemble ||||
+## ① LogisticRegression
+### [ 기본 모델 ]
+```python
+Accuracy: 0.5726
+              precision    recall  f1-score   support
 
+       False       0.95      0.56      0.71      1353
+        True       0.11      0.68      0.20       112
+
+    accuracy                           0.57      1465
+   macro avg       0.53      0.62      0.45      1465
+weighted avg       0.89      0.57      0.67      1465
+```
+
+## ② LightGBM
+### [ 기본 모델 ]
+```python
+Accuracy: 0.8253
+               precision    recall  f1-score   support
+
+           0       0.90      0.89      0.90      1272
+           1       0.35      0.37      0.36       193
+
+    accuracy                           0.83      1465
+   macro avg       0.63      0.63      0.63      1465
+weighted avg       0.83      0.83      0.83      1465
+```
+<img src="images/lgb_cm.png" width="600" height="500" />
+<img src="images/lgb_roc.png" width="600" height="500" />
+
+### [ 오버샘플링 모델 ]
+```python
+Accuracy: 0.8573
+               precision    recall  f1-score   support
+
+           0       0.89      0.95      0.92      1272
+           1       0.42      0.23      0.30       193
+
+    accuracy                           0.86      1465
+   macro avg       0.66      0.59      0.61      1465
+weighted avg       0.83      0.86      0.84      1465
+```
+<img src="images/lgb_cm_os.png" width="600" height="500" />
+<img src="images/lgb_roc_os.png" width="600" height="500" />
 
 <br>
 
+## ③ XGBoost
+### [ 기본 모델 ]
+```python
+Accuracy: 0.7850
+               precision    recall  f1-score   support
+
+           0       0.91      0.84      0.87      1272
+           1       0.29      0.45      0.36       193
+
+    accuracy                           0.78      1465
+   macro avg       0.60      0.64      0.61      1465
+weighted avg       0.83      0.78      0.80      1465
+```
+<img src="images/xgb_cm.png" width="600" height="500" />
+<img src="images/xgb_roc.png" width="600" height="500" />
+
+### [ 오버샘플링 모델 ]
+```python
+Accuracy: 0.7768
+               precision    recall  f1-score   support
+
+           0       0.92      0.82      0.86      1272
+           1       0.30      0.50      0.37       193
+
+    accuracy                           0.78      1465
+   macro avg       0.61      0.66      0.62      1465
+weighted avg       0.83      0.78      0.80      1465
+```
+<img src="images/xgb_cm_os.png" width="600" height="500" />
+<img src="images/xgb_roc_os.png" width="600" height="500" />
+
+### [ 하이퍼 파라미터 조정 모델 ]
+```python
+Best Hyperparameters: {'learning_rate': 0.2, 'max_depth': 3, 'n_estimators': 300}
+Accuracy: 0.5945
+              precision    recall  f1-score   support
+
+           0       0.93      0.58      0.71      1277
+           1       0.20      0.69      0.30       188
+
+    accuracy                           0.59      1465
+   macro avg       0.56      0.64      0.51      1465
+weighted avg       0.83      0.59      0.66      1465
+```
+
+## ④ Adaboost 
+### [ 하이퍼 파라미터 조정 모델 ]
+```python
+Best Hyperparameters: {'learning_rate': 0.1, 'n_estimators': 100}
+Accuracy: 0.5945
+              precision    recall  f1-score   support
+
+           0       0.93      0.58      0.71      1277
+           1       0.20      0.69      0.30       188
+
+    accuracy                           0.59      1465
+   macro avg       0.56      0.64      0.51      1465
+weighted avg       0.83      0.59      0.66      1465
+```
+
+## ⑤ CATBoost
+### [ 기본 모델 ]
+```python
+Accuracy: 0.8724
+               precision    recall  f1-score   support
+
+           0       0.88      0.99      0.93      1272
+           1       0.62      0.08      0.14       193
+
+    accuracy                           0.87      1465
+   macro avg       0.75      0.54      0.53      1465
+weighted avg       0.84      0.87      0.83      1465
+```
+<img src="images/cm_cb.png" width="600" height="500" />
+<img src="images/cb_roc.png" width="600" height="500" />
+
+### [ 오버샘플링 모델 ]
+```python
+Accuracy: 0.8205
+               precision    recall  f1-score   support
+
+           0       0.91      0.88      0.90      1272
+           1       0.35      0.41      0.38       193
+
+    accuracy                           0.82      1465
+   macro avg       0.63      0.65      0.64      1465
+weighted avg       0.83      0.82      0.83      1465
+```
+<img src="images/cb_cm_os.png" width="600" height="500" />
+<img src="images/cb_roc_os.png" width="600" height="500" />
+
+
+## ⑥ RandomForest
+### [ 기본 모델 ]
+```python
+Accuracy: 0.9242
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1353
+           1       0.67      0.02      0.03       112
+
+    accuracy                           0.92      1465
+   macro avg       0.80      0.51      0.50      1465
+weighted avg       0.91      0.92      0.89      1465
+```
+
+### [ 오버샘플링 모델 ]
+```python
+Accuracy: 0.8901
+              precision    recall  f1-score   support
+
+           0       0.93      0.95      0.94      1353
+           1       0.22      0.17      0.19       112
+
+    accuracy                           0.89      1465
+   macro avg       0.58      0.56      0.57      1465
+weighted avg       0.88      0.89      0.88      1465
+```
+
+## ⑦ SVM
+### [ 기본 모델 ]
+```python
+Accuracy: 0.9235
+              precision    recall  f1-score   support
+
+       False       0.92      1.00      0.96      1353
+        True       0.00      0.00      0.00       112
+
+    accuracy                           0.92      1465
+   macro avg       0.46      0.50      0.48      1465
+weighted avg       0.85      0.92      0.89      1465
+```
+
+## ⑧ Ensemble
+### [ RandomForest + XGBoost ]
+```python
+Accuracy: 0.92
+               precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1353
+           1       0.25      0.01      0.02       112
+
+    accuracy                           0.92      1465
+   macro avg       0.59      0.50      0.49      1465
+weighted avg       0.87      0.92      0.89      1465
+```
+<br>
+
 </br>
+
+
 
 # 7. 수행결과
 ### 주요 기능
@@ -398,15 +592,23 @@ for var in binary_vars:
 <br>
 
 # 10. 추가 개선 방안
-오버샘플링(SMOTE, RandomSampling, ADASYN), 언더샘플링, 하이퍼 파라미터 조정(그리드서치, 랜덤서치), 특성 중요도에 따른 변수 선택, 데이터 분할, 데이터 증강, 파생변수 생성 등을 시도했으나 모델의 성능 향상이 미미하였고 추가적인 분석을 통해 추가 개선 방안에 대하여 정리해 보았습니다.
+오버샘플링(SMOTE, RandomSampling, ADASYN), 언더샘플링, 하이퍼 파라미터 조정(그리드서치, 랜덤서치), 모델 앙상블, 특성 중요도에 따른 변수 선택, 데이터 분할, 데이터 증강, 파생변수 생성 등을 시도했으나 모델의 성능 향상이 미미하였고 추가적인 분석을 통해 추가 개선 방안에 대하여 정리해 보았습니다.
 
 ### ① 데이터 확보 및 증강
 외부 데이터를 활용하여 이탈 예측에 도움이 될 만한 변수 확보 필요
 
+### ② 클러스터링을 활용한 분석
+기존 데이터의 특성을 활용해 이탈 가능성이 높은 그룹을 사전 분류
+K-Means, DBSCAN, Hierarchical Clustering을 사용하여 유사한 특성을 가진 고객군을 정의하여 이탈 가능성이 높은 군집을 찾아내고, 해당 그룹에 대해 맞춤형 이탈 예측 모델 적용
 
+<br>
 
 # 11. 한 줄 회고
-**김정훈🐉**: <br>
-**박주은🐑**: <br>
-**이세진🐂**: <br>
-**임수연🐒**: <br>
+**김정훈🐉**: 이번 프로젝트를 통해 고객 이탈 데이터를 찾고 데이터의 특성에 맞는 적합한 모델을 선정하는 것뿐만이 아니라 데이터를 선정하고 확인/정제의 과정의 중요성을 다시 느꼈다. <br>
+
+**박주은🐑**:  데이터 특성상 이탈 기준과 학습 데이터에 반영할 특성의 시점을 직접 정해야했는데, 이를 고민하는 시간이 길었다. 향후 시계열 분석을 공부하여 기준 설정을 체계화할 수 있도록 해야겠다.
+또, 모델 선택 기준의 부재로 비효율을 느꼈으며, 모델별 장단점과 모델 선택 순서 기준의 필요성을 깨달았다.<br> 
+
+**이세진🐂**:  이탈자와 유지자 데이터가 비슷한 비율이라는 것을 늦게 깨달았지만, 다양한 모델링 기법과 데이터 처리 방법을 시도하면서 실패를 통해 데이터 분석의 더 깊은 인사이트를 얻을 수 있었습니다.<br>
+
+**임수연🐒**: 정제된 이탈자 분석 데이터가 아닌 패널조사의 결과로 이탈여부를 예측하려다보니 시간 흐름에 따른 분석과 이탈자 정의하여 모델을 학습 시키는 부분까지 어려움이 많았고 이번 프로젝트를 통해 데이터 탐색의 과정이 매우 중요함을 다시 한 번 깨닫게 되는 시간이었습니다.  <br>
